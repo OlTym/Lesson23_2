@@ -1,7 +1,7 @@
+package Service;
+
 import Model.Group;
 import Model.Student;
-import Service.Service;
-import Service.ServiceEntity;
 
 import java.util.List;
 import java.util.Map;
@@ -36,32 +36,36 @@ public class ServiseUtil {
     }
 
 
-    public static String getStudentByGroup(Group group) {
+    public static String getStudentByGroup(String groupName) {
         final StringBuilder sb = new StringBuilder();
         Service service = new ServiceEntity();
-        Map<String, Integer> map = service.getStudentsByGroup(group);
+        Map<String, Integer> map = service.getStudentsByGroup(groupName);
 
-        sb.append("Group " + group.getName()).append("\n");
+        if (map != null) {
+            sb.append("Group ").append(groupName).append("\n");
 
-        for (Map.Entry entry : map.entrySet()) {
-            sb.append(entry.getKey()).append(" ").append(entry.getValue()).append("\n");
+            for (Map.Entry entry : map.entrySet()) {
+                sb.append(entry.getKey()).append(" ").append(entry.getValue()).append("\n");
+            }
         }
         return sb.toString();
 
     }
 
-    public static String getGroupByStudent(Student student) {
+    public static String getGroupByStudent(String studentName) {
         final StringBuilder sb = new StringBuilder();
         Service service = new ServiceEntity();
-        Map<String, String> map = service.getGroupByStudent(student);
+        Map<String, String> map = service.getGroupByStudent(studentName);
 
-        sb.append(student.getName()).append(" group").append("\n");
+        if (map != null) {
+            sb.append("Student ").append(studentName).append("\n");
 
-        for (Map.Entry entry : map.entrySet()) {
-            sb.append(entry.getKey()).append(" ").append(entry.getValue()).append("\n");
+            for (Map.Entry entry : map.entrySet()) {
+                sb.append("group ").append(entry.getKey()).append(" ").append(entry.getValue()).append("\n");
+            }
+
         }
         return sb.toString();
-
     }
 
 

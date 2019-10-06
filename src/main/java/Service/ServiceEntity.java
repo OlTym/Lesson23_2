@@ -27,32 +27,40 @@ public class ServiceEntity implements Service {
     }
 
     @Override
-    public Map<String, Integer> getStudentsByGroup(Group group) {
+    public Map<String, Integer> getStudentsByGroup(String groupName) {
+
+        Map<String, Integer> map = null;
         Dao dao = new DaoEntity();
-        List<?> list = dao.getStudentByGroup(group);
+        Group group = dao.getGroupByName(groupName);
 
-        Map<String, Integer> map = new HashMap<>();
-
-
-        for (int i = 0; i < list.size(); i++) {
-            Object[] row = (Object[]) list.get(i);
-            map.put((String) row[0], (int) row[1]);
+        if (group != null) {
+            List<?> list = dao.getStudentByGroup(group);
+            map = new HashMap<>();
+            for (int i = 0; i < list.size(); i++) {
+                Object[] row = (Object[]) list.get(i);
+                map.put((String) row[0], (int) row[1]);
+            }
 
         }
         return map;
     }
 
     @Override
-    public Map<String, String> getGroupByStudent(Student student) {
+    public Map<String, String> getGroupByStudent(String studentName) {
 
+        Map<String, String> map = null;
         Dao dao = new DaoEntity();
-        List<?> list = dao.getGroupByStudent(student);
 
-        Map<String, String> map = new HashMap<>();
+        Student student = dao.getStudentByName(studentName);
 
-        for (int i = 0; i < list.size(); i++) {
-            Object[] row = (Object[]) list.get(i);
-            map.put((String) row[0], (String) row[1]);
+        if (student != null) {
+            map = new HashMap<>();
+
+            List<?> list = dao.getGroupByStudent(student);
+            for (int i = 0; i < list.size(); i++) {
+                Object[] row = (Object[]) list.get(i);
+                map.put((String) row[0], (String) row[1]);
+            }
 
         }
         return map;

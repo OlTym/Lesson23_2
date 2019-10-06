@@ -15,4 +15,9 @@ public interface Dao {
 
     List<?> getGroupByStudent(Student student);
 
+    Student getStudentByName(String nameStudent);
+
+    Group getGroupByName(String nameGroup);
+
+
 }

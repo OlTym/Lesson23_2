@@ -1,5 +1,6 @@
 import Model.Group;
 import Model.Student;
+import Service.ServiseUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +44,9 @@ public class Main {
         ServiseUtil.fillGroup(groupJava);
         ServiseUtil.fillGroup(groupPhp);
 
-        System.out.println(ServiseUtil.getStudentByGroup(groupJava));
-        System.out.println(ServiseUtil.getStudentByGroup(groupPhp));
-        System.out.println(ServiseUtil.getGroupByStudent(alex));
+        System.out.println(ServiseUtil.getStudentByGroup("java"));
+        System.out.println(ServiseUtil.getStudentByGroup("php"));
+        System.out.println(ServiseUtil.getGroupByStudent("alex"));
 
 
     }

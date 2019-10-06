@@ -11,9 +11,9 @@ public interface Service {
 
     void addStudent(Student student);
 
-    Map<String, Integer> getStudentsByGroup(Group group);
+    Map<String, Integer> getStudentsByGroup(String groupName);
 
-    Map<String, String> getGroupByStudent(Student student);
+    Map<String, String> getGroupByStudent(String studentName);
 
 
 }
